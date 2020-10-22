@@ -19,7 +19,6 @@
   "homepage": "https://github.com/dance2die/docusaurus-plugin-postcss#readme",
   "devDependencies": {},
   "dependencies": {
-    "postcss": "^8.1.2",
     "postcss-loader": "^4.0.4"
   },
   "peerDependencies": {
