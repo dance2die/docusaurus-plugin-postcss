@@ -7,10 +7,20 @@ module.exports = function (_, { id, ...options }) {
   return {
     name: "docusaurus-plugin-postcss",
 
-    configureWebpack(_, isServer, utils) {
+    configureWebpack(config, isServer, utils) {
       const { getStyleLoaders } = utils;
 
       const isProd = process.env.NODE_ENV === "production";
+
+      console.log(`------------- docusaurus-plugin-postcss --------------`);
+      console.log(
+        `config, isServer, utils`,
+        config,
+        isServer,
+        utils,
+        require.resolve("postcss-loader")
+      );
+
       return {
         module: {
           rules: [
@@ -19,7 +29,8 @@ module.exports = function (_, { id, ...options }) {
               use: [
                 // ...getStyleLoaders(isServer),
                 {
-                  loader: "postcss-loader",
+                  // loader: "postcss-loader",
+                  loader: require.resolve("postcss-loader"),
                   options: options || {},
                 },
               ],
