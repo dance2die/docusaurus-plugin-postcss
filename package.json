@@ -17,9 +17,7 @@
     "url": "https://github.com/dance2die/docusaurus-plugin-postcss/issues"
   },
   "homepage": "https://github.com/dance2die/docusaurus-plugin-postcss#readme",
-  "devDependencies": {
-    "postcss-preset-env": "^6.7.0"
-  },
+  "devDependencies": {},
   "dependencies": {
     "postcss": "^8.1.2",
     "postcss-loader": "^4.0.4"
