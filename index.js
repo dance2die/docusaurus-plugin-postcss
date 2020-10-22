@@ -1,11 +1,12 @@
 /**
  * Create a custom Docusaurus v2.0 webpack configuration for post css
  *
- * Copied from https://github.com/rlamana/docusaurus-plugin-sass/blob/master/docusaurus-plugin-sass.js
+ * Modified https://github.com/rlamana/docusaurus-plugin-sass/blob/master/docusaurus-plugin-sass.js
  */
 module.exports = function (_, { id, ...options }) {
   return {
-    name: "docusaurus-plugin-sass",
+    name: "docusaurus-plugin-postcss",
+
     configureWebpack(_, isServer, utils) {
       const { getStyleLoaders } = utils;
 
@@ -14,7 +15,7 @@ module.exports = function (_, { id, ...options }) {
         module: {
           rules: [
             {
-              test: /\.s[ca]ss$/,
+              test: /\.css$/i,
               oneOf: [
                 {
                   test: /\.module\.s[ca]ss$/,
@@ -30,8 +31,8 @@ module.exports = function (_, { id, ...options }) {
                       onlyLocals: isServer,
                     }),
                     {
-                      loader: "sass-loader",
-                      options: options || {},
+                      loader: "postcss-loader",
+                      options: options ?? {},
                     },
                   ],
                 },
@@ -39,8 +40,8 @@ module.exports = function (_, { id, ...options }) {
                   use: [
                     ...getStyleLoaders(isServer),
                     {
-                      loader: "sass-loader",
-                      options: options || {},
+                      loader: "postcss-loader",
+                      options: options ?? {},
                     },
                   ],
                 },
