@@ -3,7 +3,7 @@
  *
  * Modified https://github.com/rlamana/docusaurus-plugin-sass/blob/master/docusaurus-plugin-sass.js
  */
-module.exports = function (_, { id, ...options }) {
+module.exports = function (_, { id, ...pluginOptions }) {
   return {
     name: "docusaurus-plugin-postcss",
 
@@ -11,15 +11,17 @@ module.exports = function (_, { id, ...options }) {
       const { getStyleLoaders } = utils;
 
       const isProd = process.env.NODE_ENV === "production";
+      const loader = require.resolve("postcss-loader");
+      const options = pluginOptions || {};
 
-      console.log(`------------- docusaurus-plugin-postcss --------------`);
-      console.log(
-        `config, isServer, utils`,
-        config,
-        isServer,
-        utils,
-        require.resolve("postcss-loader")
-      );
+      // console.log(`------------- docusaurus-plugin-postcss --------------`);
+      // console.log(
+      //   `config, isServer, utils`,
+      //   config,
+      //   isServer,
+      //   utils,
+      //   require.resolve("postcss-loader")
+      // );
 
       return {
         module: {
@@ -30,13 +32,13 @@ module.exports = function (_, { id, ...options }) {
                 // ...getStyleLoaders(isServer),
                 {
                   // loader: "postcss-loader",
-                  loader: require.resolve("postcss-loader"),
-                  options: options || {},
+                  loader,
+                  options,
                 },
               ],
               // oneOf: [
               //   {
-              //     test: /\.module\.s[ca]ss$/,
+              //     test: /\.module\.css$/,
               //     use: [
               //       ...getStyleLoaders(isServer, {
               //         modules: {
@@ -49,8 +51,8 @@ module.exports = function (_, { id, ...options }) {
               //         onlyLocals: isServer,
               //       }),
               //       {
-              //         loader: "postcss-loader",
-              //         options: options || {},
+              //         loader,
+              //         options,
               //       },
               //     ],
               //   },
@@ -58,8 +60,8 @@ module.exports = function (_, { id, ...options }) {
               //     use: [
               //       ...getStyleLoaders(isServer),
               //       {
-              //         loader: "postcss-loader",
-              //         options: options || {},
+              //         loader,
+              //         options,
               //       },
               //     ],
               //   },
