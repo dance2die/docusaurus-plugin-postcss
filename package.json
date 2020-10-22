@@ -1,5 +1,5 @@
 {
-  "name": "docusaurus-plugin-tailwindcss",
+  "name": "docusaurus-plugin-postcss",
   "version": "0.0.1-alpha.0",
   "description": "nada yet",
   "main": "index.js",
