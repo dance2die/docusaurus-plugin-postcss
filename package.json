@@ -10,8 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/dance2die/docusaurus-plugin-postcss.git"
   },
+  "peerDependencies": {
+    "@docusaurus/core": "^2.0.0"
+  },
   "keywords": [],
-  "author": "",
+  "author": "dance2die",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dance2die/docusaurus-plugin-postcss/issues"
